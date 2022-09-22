@@ -1,0 +1,174 @@
+<section class="property-binding">
+
+    <!-- interpolacao -->
+    <article>
+        <h3>Interpolação</h3>
+        Exibindo valores do componente e resolvendo expressoes dentro da interpolacao :
+        <br>
+        - String renderizada com Interpolação vinda do componente: {{ url }}<br>
+        - Executando expressão : 1 + 1 é : {{ 1 + 1 }}<br>
+        - Recebendo valor de um metodo chamado : 1 + 1 + valorMetodo é : {{ 1 + 1 + getValor() }}<br>
+        - Recebendo valor de um metodo chamado, com propriedade na classe {{ getCurtirCurso() }}<br>
+    </article>
+    <br>
+
+    <!-- property binding -->
+    <article>
+        <h3>Property Binding</h3>
+        Chamando diretamente um metodo ou variavel que retornará o valor <br>
+
+        <!-- utilizando interpolacao para inserir a imagem -->
+        <img src="{{ urlImagem }}">
+
+        <!-- utilizando a propriedade da tag img para inserir a imagem neste elemento -->
+        <!-- <img [src]="urlImagem"> -->
+
+        <!-- ao utilizar property binding o angular gera um codigo igual a este:  -->
+        <!-- <img bind-src="urlImagem"> -->
+    </article>
+    <br>
+
+    <!-- property binding class e property binding style -->
+    <article>
+        <h3>Property Binding Class e Property Binding Style - Ambas utilizando CSS</h3>
+        Ou seja, mudando estilos css dinamicamente de um componente html
+
+        <div>
+            Selecione uma classe :
+            <!-- criando uma variavel local de template para poder acessar as options. E um evento para escutar o evento mudando.
+                Deve-se criar essa variavel dentro de uma tag html :
+                Ex: #NomeDaVariavel (evento)="valor"
+            -->
+
+            <!-- Fazendo o class binding -->
+            <select #variavelElemento (change)="0">
+                <option value="alert-success">Sucesso</option>
+                <option value="alert-info">Info</option>
+                <option value="alert-danger">Erro</option>
+                <option value="alert-warning">Atenção</option>
+            </select><br><br>
+            <div class="alert {{ variavelElemento.value }}" role="alert">
+                Meu texto com alerta!
+            </div>
+
+            <!-- Fazendo style binding -->
+            <!-- texto só irá aparecer quando a opção erro for selecionada -->
+            <div class="alert alert-danger" role="alert"
+                [style.display]="variavelElemento.value == 'alert-danger' ? 'block' : 'none'">
+                Atenção Erro exibido!
+            </div>
+
+            <!-- forma menos otimizada de executar um classBinding  -->
+            <!-- aplicando o class binding no angular:
+                Ex : [class.NomeClassCss]="NomeDaVariavel.value"
+
+                comparando o valor da classe selecionada no combo box é o mesmo da div atual
+            -->
+            <!-- <div class="alert" role="alert"
+                [class.alert-success]="variavelElemento.value == 'alert-success'">
+                Sucesso
+            </div>
+            <div class="alert" role="alert"
+                [class.alert-info]="variavelElemento.value == 'alert-info'">
+                Info
+            </div>
+            <div class="alert" role="alert"
+                [class.alert-danger]="variavelElemento.value == 'alert-danger'">
+                Erro
+            </div>
+            <div class="alert" role="alert"
+                [class.alert-warning]="variavelElemento.value == 'alert-warning'">
+                Atenção
+            </div> -->
+
+        </div>
+
+    </article>
+
+</section>
+<br>
+
+<section class="event-binding">
+    <h3>Event Binding</h3>
+    Podem ser escutados quaisquer tipos de eventos que seja disparado na pagina, <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">mais informacoes aqui</a>.
+
+    <div>
+        <!-- utilizando eventos com parentes ao redor do nome do evento 
+            Ex : (NomeEvento)="Metodo()"
+        -->
+        <button (click)="botaoClicado()" class="btn btn-primary">Click me!</button>
+        <br><br>
+
+        <!-- passando o objeto evento "keyUp" para o metodo, para pegar o que está sendo inserido no campo texto -->
+        <input type="text" (keyup)="onKeyUp($event)"/>
+        <p>Valor Atual Inserido : {{ valorAtual }}</p>
+
+        <!-- salvando valor digitado apos apertar enter, utilizando variavel no elemento -->
+        <!-- https://www.tektutorialshub.com/angular/property-value-does-not-exist-on-type-eventtarget-error-in-angular/ -->
+        <input type="text" #campoInput (keyup.enter)="salvarValor(campoInput.value)"/>
+        <p>Valor Atual Inserido após enter : {{ valorSalvo }}</p>
+        
+        <span (mouseover)="passandoMouse()" (mouseout)="passandoMouse()" [class.hightlight]="mouseIsOuver">Passe o mouse!</span>
+
+    </div>
+</section>
+<br>
+
+<section class="twoway-binding">
+    <article>
+        <h3>Two-way data binding</h3>
+        <!-- https://stackoverflow.com/a/67172320 -->
+
+        <!-- OS TRES EXEMPLOS FAZEM A MESMA COISA MAS O TERCEIRO É O MAIS SIMPLES -->
+        <div>
+            <!-- setando o valor de input com a variavel que esta no componente -->
+            <!-- passando o valor do html (view), para o componente e componente por sua vez, irá passar de novo pra view -->
+            <!-- fazendo o two-way data binding, tendo uma associação de propriedade -> [value]="nome" e uma associação de evento -> (input)="nome = $any($event.target).value" -->
+            <input type="text"
+                [value]="nome"
+                (input)="nome = $any($event.target).value"
+            />
+
+            <!-- segundo exemplo -->
+            <!-- associa a variavel nome do componente a este input -->
+            <input type="text"
+                [(ngModel)]="nome"
+                (ngModelChange)="nome = $any($event)"
+            />
+
+            <!-- terceiro exemplo, de maneira mais simplificada, utilizando two-way databinding diretamente com a variavel/propriedade do componente -->
+            <input type="text" [(ngModel)]="nome"/>
+
+            <!-- quarto exemplo, o que o angular faz de verdade por baixo dos panos-->
+            <!-- <input type="text" bindon-ngmodel="nome"/> -->
+
+            <p>Você digitou: {{ nome }}</p>
+
+        </div>
+
+        <!-- utilizando em um objeto o two-way data binding -->
+        <div>
+            Utilizando two-way com objeto :
+            <input type="text" [(ngModel)]="pessoa.nome">
+            <input type="text" [(ngModel)]="pessoa.idade">
+            <input type="text" [(ngModel)]="pessoa.altura">
+
+            <P>Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade, com {{ pessoa.altura }} de altura</P>
+        </div>
+
+    </article>
+</section>
+<br>
+
+<!-- Reutilizando componentes com input properties -->
+<section class="input-output-properties">
+    <article>
+        <h3>Input/Output Properties</h3>
+
+        <!-- reutilizando o componente 'input-property', que está com um seletor diferente do seu nome -->
+        <!-- e passando uma variavel/propriedade do componente 'data-binding-component' para o 'input-property' -->
+        <!-- utilizando input-properties -->
+        <app-curso [nomeDoCursoComponenteInput]="nomeDoCurso"></app-curso>
+
+    </article>
+</section>
