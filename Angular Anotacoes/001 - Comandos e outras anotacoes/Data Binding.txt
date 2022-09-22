@@ -1,0 +1,16 @@
+Data binding : Associar as informações do componente para o template (HTML). E vice-versa.
+Ou seja, fazer com que as informações (valores, metodos que retornam valor) saiam do componente e vão para o html e vice-versa.
+
+Existem 4 formas de fazer o data binding :
+
+1 - Interpolation : Interpolação, utilizando {{valorAtributo}} {{valorRetornoMetodo}}
+	'Onde a informação sai do componente para o template'
+	
+2 - Property Binding : Associação de propriedade, utilizando [propriedade] = "valor". 
+	'Onde a informação sai do componente para o template'
+
+3 - Event Handler : Escuta eventos do template (html), click do botão de mouse entre outros, para o componente, para executar alguma lógica de programação.
+	'Onde o evento parte do html, via interação do usuário para o componente'
+
+4 - Two-way binding : Mão de duas vias, onde é possível manter o template e o componente atualizados ao mesmo tempo. Util na utilização de formulários
+	'Onde a informação pode ir do componente para o template e vice-versa'

@@ -1,0 +1,39 @@
+Uma classe de serviço possui metodos que vao realizar alguma lógica
+
+Serviço é responsavel por conectar o frond end com o backend.
+Ou seja, conecta de fato o front-end desenvolvido em angular, 
+com o back-end desenvolvido em qualquer outra linguagem : node.js, .net, java, python, ruby
+
+Criando um "serviço" via terminal :
+	ng g s NOMESERVICO
+
+ou criando dentro de uma pasta 
+	ng g s nomeservico/nomepasta
+
+Ex :
+	ng g s meuservico
+	
+	ng g s meuservico/cursos
+	
+
+// utilizando Injectable, com seu decorator, para que a classe possa ser injetada em outras,
+// utilizando injecao de dependencia no projeto
+// tambem deve-se importar essa classe.
+// no cursos.module.ts, ou app.module.ts, deve-se criar o objeto 'providers' (essa é uma das formas de fazer isso)
+// no cursos.module.ts o 'escopo do servico fica restrito ao modulo'
+// ou app.module.ts o 'escopo do servico fica aberto a toda a aplicacao'
+
+Exemplo : dentro de @NgModule :
+
+  ...
+  exports: [
+	...
+  ],
+  //importa os servicos fornecedores
+  providers: [
+    CursosService
+  ]
+  ...
+  
+// atualizacao : nao é necessario mais importar nos modulos já que a versao atual do angular 
+// faz a injecao do componente para todo escopo da aplicação

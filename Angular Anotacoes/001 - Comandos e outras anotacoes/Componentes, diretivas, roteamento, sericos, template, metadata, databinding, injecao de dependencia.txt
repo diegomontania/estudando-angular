@@ -1,0 +1,38 @@
+Angular é para criar aplicações SPA (Single Page Application)
+
+Ao criar uma aplicação angular, a aplicação é orientada a componentes.
+Tudo na aplicação são componentes. Componente pai/raiz é o componente inicial que
+herda os demais componentes. Ou seja, cada pedacinho da tela vira um componente para ser utilizado.
+
+-------------------------------------------------------------------------------------
+
+Componente (é a VIEW)
+	Encapsula :
+		Template (Formulario, botões, inputs, datagrid, divs)
+		MetaData (meta dados, ler e processar as classes)
+		Dado a ser mostrado na tela (Data Binding, componente fala com template via databinding, mostrando dados)
+		Comportamento da VIEW
+		
+Diretivas
+	Responsável por modificar elementos DOM e/ou seu comportamento. Em outras palavras é possível alterar
+	os elementos do html/dom criando diretivas para que caso ocorra alguma ação algum comportamento seja
+	aplicado em um botão por exemplo. De sumir ou aparecer, de uma div exibir ou não uma informação, etc.
+	
+Roteamento (Router)
+	Responsável pela navegação e roteamento das páginas
+	
+Serviços
+	Faz integração do frond-end com o back-end, Deve-se evitar criar regras de negocio nos componentes. 
+	Utilizar uma classe de serviço para tal. Esta classe terá toda a lógica de negocio e se comunica com o back-end.
+	Serviço também pode ser injetado em outras classes.
+	
+Template
+	Formulario, botões, inputs, datagrid, divs
+	
+Metadata
+	Meta dados, responsável por ler e processar as classes
+	
+DataBinding
+	Responsável por fazer união dos dados do backend com os dados da view
+	
+Injeção de dependencia

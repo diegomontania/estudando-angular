@@ -1,0 +1,19 @@
+É um arquivo que ajuda organizar a aplicação e ajuda modularizar. 
+Onde é possivel ter diferentes componentes em um modulo.
+Também é possivel escolher quais componentes podem ser expostos para outros módulos da aplicação
+
+Pelo que eu pude entender, um modulo pode conter N componentes. E ao importar esses componentes neste modulo
+Você importa apenas o MODULO que por sua vez importa N componentes. Ou seja, o modulo fica encarregado de ter varios
+componentes atrelados a ele. Então pode-se criar modulos que atendem varias necessidades distintas com componentes distintos.
+
+Ex : modulo "tela", onde ele tem todos os componentes que são essenciais para que toda tela do sistema exista. 
+Então nesse modulo vamos ter os componentes : CabeçalhoPag, RodapePag, CorpoPag, BarraLateralPag, etc.
+
+Todos esses componentes acima são componentes que são "Exportados". Porém um modulo pode ter um componente que não precisa ser exportado.
+Ele pode ser considerado um "componente privado". Que só pode ser utilizado pelo seu módulo.
+
+Criando um modulo de "funcionalidade" via terminal :
+	ng g m NOME-MODULO
+
+Ex :
+	ng g m cursos

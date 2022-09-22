@@ -1,0 +1,11 @@
+Instalar typescript
+	- npm install -g typescript
+
+Instalar Angular
+	- npm install -g @angular/cli
+
+Entrar no diretorio que você deseja criar o projeto, pelo terminal do visual studio code
+	- cd NomePasta
+
+Dar comando para criar o projeto dentro da pasta
+	- ng new NomeDoProjetoAngular
