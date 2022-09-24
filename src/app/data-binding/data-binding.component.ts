@@ -26,6 +26,8 @@ export class DataBindingComponent implements OnInit {
 
   nomeDoCurso: string = 'Angular';
 
+  valorInicial: number = 15;
+
   //declara mmetodo para ser pego no template
   getValor(){
     return 1;
@@ -52,6 +54,10 @@ export class DataBindingComponent implements OnInit {
 
   passandoMouse(){
     this.mouseIsOuver = !this.mouseIsOuver;
+  }
+
+  onMudouValor(evento: any){
+    console.log(evento.novoValor);
   }
 
   constructor() { }

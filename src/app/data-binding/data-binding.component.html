@@ -172,3 +172,23 @@
 
     </article>
 </section>
+
+<!-- Criando eventos personalizados com output properties -->
+<section class="input-output-properties">
+    <article>
+        <h3>Input/Output Properties</h3>
+
+        <app-curso [nomeDoCursoComponenteInput]="nomeDoCurso"></app-curso>
+
+        <!-- declara componente que terá seu valor incrementado, utilizando event binding-->
+        <!-- aqui a variavel do componente está vindo do componente (exposta), e aqui está sendo setado um valor padrao -->
+        <!-- com uma variavel que vem do componente data-binding -->
+        <!-- tambem escuta um evento personalizado que foi executado pelo componente filho (output-property.component) -->
+        <contador [valor]="valorInicial"
+            (mudouValor)="onMudouValor($event)"
+        ></contador>
+
+    </article>
+
+
+</section>
